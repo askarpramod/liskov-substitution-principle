@@ -2,20 +2,11 @@
 
 namespace LSP
 {
-    public class PowerUser
+    public class PowerUser : User
     {
-        protected IDictionary<string, bool> AccessRights { get; } = new Dictionary<string, bool>();
-
-        public virtual void SetupAccessRight(string right, bool value)
+        public override void SetupAccessRight(string right, bool status)
         {
-            AccessRights.Add(right, value);
-        }
-
-        public bool GetValueOfAccessRight(string right)
-        {
-            AccessRights.TryGetValue(right, out bool value);
-
-            return value;
+            StatusByRight.Add(right, status);
         }
     }
 }

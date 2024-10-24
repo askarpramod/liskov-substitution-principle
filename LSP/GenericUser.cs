@@ -2,7 +2,7 @@
 
 namespace LSP
 {
-    public class GenericUser : PowerUser
+    public class GenericUser : User
     {
         private readonly HashSet<string> _protectedRights;
 
@@ -11,12 +11,17 @@ namespace LSP
             _protectedRights = protectedRights;
         }
 
-        public override void SetupAccessRight(string right, bool value)
+        public override void SetupAccessRight(string right, bool status)
         {
-            if (!_protectedRights.Contains(right))
+            if (IsNotContains(right))
             {
-                AccessRights.Add(right, value);
+                StatusByRight.Add(right, status);
             }
+        }
+
+        private bool IsNotContains(string right)
+        {
+            return !_protectedRights.Contains(right);
         }
     }
 }

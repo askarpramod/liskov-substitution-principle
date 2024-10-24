@@ -6,13 +6,13 @@
 
         private static string Database;
 
-        public static void WriteToDBForce(PowerUser user, string message)
+        public static void WriteToDBForce(User user, string message)
         {
             user.SetupAccessRight(WriteToDatabase, true);
             WriteToDB(user, message);
         }
 
-        public static void WriteToDB(PowerUser user, string message)
+        public static void WriteToDB(User user, string message)
         {
             if (user.GetValueOfAccessRight(WriteToDatabase))
             {
